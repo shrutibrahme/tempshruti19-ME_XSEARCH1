@@ -89,18 +89,21 @@ public class TestCases {
       WebDriverWait wait = new WebDriverWait(driver, 20);
       List<WebElement> results = wait.until(
         ExpectedConditions.presenceOfAllElementsLocatedBy(
-            By.xpath("//*[contains(text(),'Laptop') or contains(text(),'laptop')]")
+            //By.xpath("//*[contains(text(),'Laptop') or contains(text(),'laptop')]")
+            By.xpath("//a//h2//span")
         )
     );
 
-        boolean found = results.size() > 0;
-        // boolean found = false;
-        // for (WebElement item : results) {
-        //     if (item.getText().toLowerCase().contains("laptop")) {
-        //         found = true;
-        //         break;
-        //     }
-        // }
+       
+         boolean found = false;
+        for (WebElement item : results) {
+            String text = item.getText();
+            
+            if (text!=null && text.toLowerCase().contains("laptop")) {
+                found = true;
+                break;
+            }
+        }
 
 
 
@@ -139,3 +142,7 @@ public class TestCases {
 
 }
 
+///html/body/div[1]/div[1]/div[1]/div[1]/div/span[1]/div[1]/div
+//*[@id="2e988828-d69f-485d-b61e-b344cf6b2f7f"]/div/div/div/div/span/div/div/div/div[2]/div/div/div[1]/a/h2
+//*[@id="e00e1405-af2d-422a-b9f9-48bb23573634"]/div/div/div/div/span/div/div/div/div[2]/div/div/div[1]/a/h2
+////a/h2/span/text()
